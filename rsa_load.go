@@ -6,7 +6,7 @@ import (
 	"encoding/base64"
 	"encoding/pem"
 	"errors"
-	"io/ioutil"
+	"os"
 )
 
 // LoadkeyFile from file load key
@@ -38,7 +38,7 @@ func (s *RSA) loadkeyPrivFile(privFileName string) (*rsa.PrivateKey, error) {
 }
 
 func (s *RSA) loadBlock(keyFileName string) (*pem.Block, error) {
-	keyBuffer, err := ioutil.ReadFile(keyFileName)
+	keyBuffer, err := os.ReadFile(keyFileName)
 	if err != nil {
 		return nil, err
 	}
